@@ -1,0 +1,36 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url('background.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+#game {
+    text-align: center;
+}
+
+#score-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: fit-content;
+}
+
+#game-image {
+    cursor: pointer;
+}
+
+#energy-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: fit-content;
+}
