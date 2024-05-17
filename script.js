@@ -10,11 +10,6 @@ const gameName = process.env.TELEGRAM_GAMENAME || 'pizzacat pizzacat';
 let url = process.env.URL || 'https://squalety.github.io/pizzacatsol_bot/';
 const port = process.env.PORT || 8080;
 
-
-// название игры (то, что указывали в BotFather)
-const gameName = "PizzaCat"
-
-
 const TelegramBot = require('../..');
 const express = require('express');
 const path = require('path');
