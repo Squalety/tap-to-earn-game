@@ -6,7 +6,7 @@ const energyCostPerClick = 1; // Energy cost for each click
 
 
 const TOKEN = process.env.TELEGRAM_TOKEN || '7035157659:AAEQ5eululduC-HxHsAFz1Dgi-1S5hj7cq4';
-const gameName = process.env.TELEGRAM_GAMENAME || 'pizzacat pizzacat';
+const gameName = process.env.TELEGRAM_GAMENAME || 'pizzacat';
 let url = process.env.URL || 'https://squalety.github.io/pizzacatsol_bot/';
 const port = process.env.PORT || 8080;
 
