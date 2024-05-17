@@ -52,6 +52,14 @@ function regenerateEnergy() {
     }
     setTimeout(regenerateEnergy, energyRegenInterval);
 }
+// Start energy regeneration
+regenerateEnergy();
+
+// Initial updates
+updateScore();
+updateEnergy();
+
+app.set('view engine', 'ejs');
 
 if (url === '0') {
   const ngrok = require('ngrok');
@@ -63,7 +71,7 @@ if (url === '0') {
 }
 
 
-app.set('view engine', 'ejs');
+
 // Matches /start
 bot.onText(/\/start/, function onPhotoText(msg) {
   bot.sendGame(msg.chat.id, gameName);
@@ -84,9 +92,3 @@ app.listen(port, function listen() {
   console.log(`Server is listening at http://localhost:${port}`);
 });
 
-// Start energy regeneration
-regenerateEnergy();
-
-// Initial updates
-updateScore();
-updateEnergy();
