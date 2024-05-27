@@ -1,29 +1,29 @@
 let energy = 10;
 let points = 0;
 
-function tap() {
+document.getElementById('tapButton').addEventListener('click', function() {
     if (energy > 0) {
         points++;
         energy--;
         updateEnergy();
         updatePoints();
     } else {
-        alert("Out of energy! Wait for it to restore.");
+        alert('Недостаточно энергии! Подождите, чтобы восстановиться.');
     }
-}
+});
 
 function updateEnergy() {
-    document.getElementById("energy").textContent = energy;
+    document.getElementById('energy').textContent = energy;
 }
 
 function updatePoints() {
-    document.getElementById("points").textContent = points;
+    document.getElementById('points').textContent = points;
 }
 
-// Energy restoration over time (e.g., +1 energy every 10 seconds)
+// Восстановление энергии со временем (например, +1 энергия каждые 10 секунд)
 setInterval(function() {
     if (energy < 10) {
         energy++;
         updateEnergy();
     }
-}, 500); // Adjust the interval as needed
+}, 500); // Измените интервал при необходимости
