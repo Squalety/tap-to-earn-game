@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clicker Game</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tap-to-Earn Game</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div id="game">
-    <div id="score-area">
-        <img id="score-gif" src="animation.gif" alt="Score GIF">
-        <p id="score">Score: 0</p>
+    <div class="container">
+        <h1>Tap-to-Earn Game</h1>
+        <div class="display">
+            <div class="points-display">Points: <span id="points">0</span></div>
+            <div class="energy-display">Energy: <span id="energy">10</span></div>
+        </div>
+        <button id="tap-button">Tap to Earn</button>
     </div>
-    <div id="game-area">
-        <img id="game-image" src="image1.png" alt="Game Image" onclick="clickEvent()">
-    </div>
-    <p id="energy-text">Energy: <span id="energy">100</span></p>
-</div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
