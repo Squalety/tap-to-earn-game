@@ -1,37 +1,29 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const pointsDisplay = document.getElementById('points');
-    const energyDisplay = document.getElementById('energy');
-    const tapButton = document.getElementById('tap-button');
+let energy = 10;
+let points = 0;
 
-    let points = 0;
-    let energy = 10;
-    const maxEnergy = 10;
-    const energyRestoreRate = 500; // milliseconds
-    const energyRestoreAmount = 1;
-
-    function updateDisplays() {
-        pointsDisplay.textContent = points;
-        energyDisplay.textContent = energy;
-        tapButton.disabled = energy <= 0;
+function tap() {
+    if (energy > 0) {
+        points++;
+        energy--;
+        updateEnergy();
+        updatePoints();
+    } else {
+        alert("Out of energy! Wait for it to restore.");
     }
+}
 
-    tapButton.addEventListener('click', () => {
-        if (energy > 0) {
-            points++;
-            energy--;
-            updateDisplays();
-        }
-    });
+function updateEnergy() {
+    document.getElementById("energy").textContent = energy;
+}
 
-    setInterval(() => {
-        if (energy < maxEnergy) {
-            energy += energyRestoreAmount;
-            if (energy > maxEnergy) {
-                energy = maxEnergy;
-            }
-            updateDisplays();
-        }
-    }, energyRestoreRate);
+function updatePoints() {
+    document.getElementById("points").textContent = points;
+}
 
-    updateDisplays();
-});
+// Energy restoration over time (e.g., +1 energy every 10 seconds)
+setInterval(function() {
+    if (energy < 10) {
+        energy++;
+        updateEnergy();
+    }
+}, 500); // Adjust the interval as needed
