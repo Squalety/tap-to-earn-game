@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)  # Разрешаем CORS для всех доменов
+CORS(app)
 
 # Пример хранения пользователей и рейтингов в памяти
 users = {}
@@ -34,5 +34,6 @@ def rate():
     return jsonify({'message': f'Thank you for rating the game {rating}/5!'}), 200
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))  # Получение порта из переменной окружения
+    port = int(os.environ.get('PORT', 5000))
+    print(f'Starting app on port {port}')
     app.run(host='0.0.0.0', port=port, debug=True)

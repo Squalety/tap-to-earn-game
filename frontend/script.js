@@ -30,45 +30,34 @@ setInterval(function() {
     }
 }, 500); // Измените интервал при необходимости
 
-// Функция для регистрации пользователя
-function registerUser(userData) {
-    fetch(`${backendUrl}/register`, {
+document.getElementById('registerButton').addEventListener('click', async () => {
+    const telegramId = document.getElementById('telegramId').value;
+    const username = document.getElementById('username').value;
+
+    const response = await fetch(`${apiUrl}/register`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(userData)
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data.message);
-    })
-    .catch(error => {
-        console.error('Error:', error);
+        body: JSON.stringify({ telegram_id: telegramId, username: username })
     });
-}
 
-// Функция для отправки оценки
-function rateGame(ratingData) {
-    fetch(`${backendUrl}/rate`, {
+    const data = await response.json();
+    alert(data.message);
+});
+
+document.getElementById('rateButton').addEventListener('click', async () => {
+    const telegramId = document.getElementById('telegramId').value;
+    const rating = document.getElementById('rating').value;
+
+    const response = await fetch(`${apiUrl}/rate`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(ratingData)
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data.message);
-    })
-    .catch(error => {
-        console.error('Error:', error);
+        body: JSON.stringify({ telegram_id: telegramId, rating: rating })
     });
-}
 
-// Пример использования функций
-const userData = { telegram_id: '123456', username: 'user123' };
-registerUser(userData);
-
-const ratingData = { telegram_id: '123456', rating: 5 };
-rateGame(ratingData);
+    const data = await response.json();
+    alert(data.message);
+});
