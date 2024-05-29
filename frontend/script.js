@@ -1,4 +1,4 @@
-const backendUrl = 'https://squalety-tap-to-earn-game-8bab.twc1.net/'; // Замените на фактический URL вашего бэкенда
+const backendUrl = 'squalety-tap-to-earn-game-6d76.twc1.net'; // Замените на фактический URL вашего бэкенда
 
 let energy = 10;
 let points = 0;
