@@ -1,11 +1,11 @@
 from flask import Flask, request, jsonify
 import sqlite3
 from flask_cors import CORS
+import os
 
 app = Flask(__name__)
 CORS(app)
 
-# Initialize database
 def init_db():
     with sqlite3.connect('database.db') as conn:
         cursor = conn.cursor()
@@ -22,8 +22,7 @@ def init_db():
 def submit_score():
     data = request.json
     score = data.get('score')
-    # Here you would handle Telegram authentication to get username
-    username = 'test_user'  # Placeholder
+    username = 'test_user'  # Placeholder for Telegram authentication
 
     with sqlite3.connect('database.db') as conn:
         cursor = conn.cursor()
@@ -43,4 +42,5 @@ def leaderboard():
 
 if __name__ == '__main__':
     init_db()
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)

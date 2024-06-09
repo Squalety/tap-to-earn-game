@@ -1,13 +1,5 @@
-document.getElementById('start-button').addEventListener('click', startGame);
-
-function startGame() {
-    // Game logic here
-    alert('Game Started');
-}
-
-// Placeholder for sending score to backend
 function sendScoreToBackend(score) {
-    fetch('/submit-score', {
+    fetch('squalety-tap-to-earn-game-6d76.twc1.net/submit-score', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -24,7 +16,7 @@ function sendScoreToBackend(score) {
 }
 
 function fetchLeaderboard() {
-    fetch('/leaderboard')
+    fetch('squalety-tap-to-earn-game-6d76.twc1.net/leaderboard')
         .then(response => response.json())
         .then(data => {
             let scoreboard = document.getElementById('scoreboard');
