@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, jsonify
 from auth import verify_telegram_auth
 from database import init_db, add_score, get_scores
@@ -55,5 +56,6 @@ def auth():
     return jsonify({'error': 'Unauthorized'}), 401
 
 if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
     set_webhook()
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=port)
