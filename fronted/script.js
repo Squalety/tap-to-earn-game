@@ -1,32 +1,24 @@
-function sendScoreToBackend(score) {
-    fetch('squalety-tap-to-earn-game-6d76.twc1.net/submit-score', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ score: score }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-    })
-    .catch((error) => {
-        console.error('Error:', error);
+document.addEventListener('DOMContentLoaded', () => {
+    const tapButton = document.getElementById('tap-button');
+    const scoreDisplay = document.getElementById('score-display');
+    let score = 0;
+
+    tapButton.addEventListener('click', () => {
+        score++;
+        scoreDisplay.textContent = `Score: ${score}`;
+        // Send score to the backend for storage
+        // fetch('/update-score', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({ score: score }),
+        // });
     });
-}
 
-function fetchLeaderboard() {
-    fetch('squalety-tap-to-earn-game-6d76.twc1.net/leaderboard')
-        .then(response => response.json())
-        .then(data => {
-            let scoreboard = document.getElementById('scoreboard');
-            scoreboard.innerHTML = '<h2>Leaderboard</h2>';
-            data.forEach(user => {
-                let entry = document.createElement('div');
-                entry.textContent = `${user.username}: ${user.score}`;
-                scoreboard.appendChild(entry);
-            });
-        });
-}
-
-document.addEventListener('DOMContentLoaded', fetchLeaderboard);
+    const loginButton = document.getElementById('login-button');
+    loginButton.addEventListener('click', () => {
+        // Redirect to Telegram for authentication
+        window.location.href = 'https://telegram.me/TapToEarnGameBot';
+    });
+});
