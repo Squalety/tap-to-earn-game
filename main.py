@@ -1,16 +1,17 @@
 import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from auth import verify_telegram_auth
+from auth import verify_telegram_auth, create_auth_hash
 from database import init_db, add_score, get_scores
 import requests
+import time
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for the app
 init_db()
 
 TELEGRAM_BOT_TOKEN = '7151685692:AAGTPRSfaijRB1NiAccAuxRWkWHWrj7gtsU'
-WEBHOOK_URL = 'https://squalety-tap-to-earn-game-6d76.twc1.net/set_webhook'  # Replace with your server's URL
+WEBHOOK_URL = 'https://squalety-tap-to-earn-game-6d76.twc1.net/set_webhook'
 
 def set_webhook():
     url = f'https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/setWebhook'
