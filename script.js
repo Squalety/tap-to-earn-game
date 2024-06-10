@@ -7,18 +7,25 @@ document.addEventListener('DOMContentLoaded', () => {
         score++;
         scoreDisplay.textContent = `Score: ${score}`;
         // Send score to the backend for storage
-        // fetch('/update-score', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify({ score: score }),
-        // });
+        fetch('/update-score', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ user_id: 'example_user_id', score: score }), // Replace with actual user_id
+        });
     });
 
     const loginButton = document.getElementById('login-button');
     loginButton.addEventListener('click', () => {
         // Redirect to Telegram for authentication
-        window.location.href = 'https://telegram.me/TapToEarnGameBot';
+        window.location.href = 'https://telegram.me/your_bot_name';
     });
+
+    // Example of fetching scores from the backend
+    fetch('/get-scores', {
+        method: 'GET',
+    })
+    .then(response => response.json())
+    .then(data => console.log(data));
 });
