@@ -8,7 +8,7 @@ app = Flask(__name__)
 init_db()
 
 TELEGRAM_BOT_TOKEN = '7151685692:AAGTPRSfaijRB1NiAccAuxRWkWHWrj7gtsU'
-WEBHOOK_URL = 'squalety-tap-to-earn-game-6d76.twc1.net/set_webhook'  # Replace with your server's URL
+WEBHOOK_URL = 'https://squalety-tap-to-earn-game-6d76.twc1.net/set_webhook'  # Replace with your server's URL
 
 def set_webhook():
     url = f'https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/setWebhook'
@@ -59,3 +59,4 @@ if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     set_webhook()
     app.run(host='0.0.0.0', port=port)
+   
